@@ -6,22 +6,7 @@ class ProductManager{
       this.products=[]
     }
 
-    //Read//
-    getProducts=async()=>{
-    const productList= await fs.promises.readFile(this.path,"utf-8")
-    const productListParse=JSON.parse(productList)
-    return productListParse
-    }
-    
-    generateId=async()=>{
-        const counter=this.products.length
-        if(counter==0){
-            return 1
-        }
-        else{
-            return (this.products[counter-1].id)+1
-        }
-    }
+   
     //Agregar//
     addProduct=async(title,description,price,thumbnail,code,stock)=>{
       if(!title || !description || !price || !thumbnail|| !code||!stock){
@@ -44,6 +29,22 @@ class ProductManager{
         }
       }
     }
+    //Read//
+    getProducts=async()=>{
+      const productList= await fs.promises.readFile(this.path,"utf-8")
+      const productListParse=JSON.parse(productList)
+      return productListParse
+      }
+      
+      generateId=async()=>{
+          const counter=this.products.length
+          if(counter==0){
+              return 1
+          }
+          else{
+              return (this.products[counter-1].id)+1
+          }
+      }
 
      //Update//
      updateProduct=async(id,title,description,price,thumbnail,code,stock)=>{
@@ -62,9 +63,7 @@ class ProductManager{
                 const currentProductsList=await this.getProducts()
                 const newProductsList=currentProductsList.map(elemento=>{
                     if(elemento.id===id){
-                      const updatedProduct={
-                        ...elemento,
-                        title,description,price,thumbnail,code,stock
+                      const updatedProduct={...elemento,title,description,price,thumbnail,code,stock
                       }
                       return updatedProduct
                     }
@@ -122,7 +121,6 @@ await productos.getProductbyId(3)
 
 //llamamos a todos los productos //
 console.log (await productos.getProducts())
-
 
 
 }
