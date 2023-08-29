@@ -109,7 +109,7 @@ await productos.addProduct('Florero','florero de Vidrio de Cuadritos', 150,"phot
 
 //Actualizamos//
 
-/*await productos.updateProduct('Florero-2','florero de Vidrio de Cuadritos', 90,"photo4.png","003","100")
+await productos.updateProduct('Florero-2','florero de Vidrio de Cuadritos', 90,"photo4.png","003","100")
 
 //Borramos//
 
@@ -120,7 +120,7 @@ await productos.deleteProduct(1)
 await productos.getProductbyId(3)
 
 //llamamos a todos los productos //
-console.log (await productos.getProducts())*/
+console.log (await productos.getProducts())
 
 }
 productsAsync()
